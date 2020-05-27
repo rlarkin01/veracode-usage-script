@@ -17,7 +17,7 @@ headers = {"User-Agent": "Python HMAC Example"}
 def main():
     creds = get_credentials()
 
-    filename = 'agencyDetails_'+datetime.now().strftime("%m.%d.%Y_%H.%M.%S")+'.csv'
+    filename = 'accountDetails_'+datetime.now().strftime("%m.%d.%Y_%H.%M.%S")+'.csv'
     with open(filename, 'w') as file:
         writer = csv.writer(file)
         writer.writerow(["Agency_name","App_total","Static_SCA","Dynamic","Users","Greenlight","eLearning","Admin_count","Admin_usernames","Creator_count","Creator_usernames"])
@@ -75,16 +75,16 @@ def get_user_counts():
             details = make_api_call(user["_links"]["self"]["href"])
             if details.ok:
                 user = details.json()
-                creatorAlreadyAdded = False
+                creator_already_added = False
                 for role in user["roles"]:
                     description = role["role_description"]
                     if description == "Administrator":
                         admins+=1
                         admin_names.append(user["user_name"])
-                    elif not creatorAlreadyAdded and (description == "Security Lead" or description == "Creator"):
+                    elif not creator_already_added and (description == "Security Lead" or description == "Creator"):
                         creators+=1
                         creator_names.append(user["user_name"])
-                        creatorAlreadyAdded = True
+                        creator_already_added = True
                     elif description == "Greenlight IDE User":
                         greenlight+=1
                     elif description == "eLearning":
