@@ -1,4 +1,4 @@
-    # Veracode Usage Script
+# Veracode Usage Script
 
 A simple example of usage of the Veracode API signing library provided on the [Veracode Help Center](https://help.veracode.com/reader/LMv_dtSHyb7iIxAQznC~9w/cCoBmgWWxUM4hOY54dTqgA) to return account data related to license use and user roles.
 
