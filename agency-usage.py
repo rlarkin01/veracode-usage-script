@@ -17,7 +17,7 @@ headers = {"User-Agent": "Python HMAC Example"}
 def main():
     creds = get_credentials()
 
-    filename = 'agencyDetails_'+datetime.now().strftime("%m.%d.%Y_%H:%M:%S")+'.csv'
+    filename = 'agencyDetails_'+datetime.now().strftime("%m.%d.%Y_%H.%M.%S")+'.csv'
     with open(filename, 'w') as file:
         writer = csv.writer(file)
         writer.writerow(["Agency_name","App_total","Static_SCA","Dynamic","Users","Greenlight","eLearning","Admin_count","Admin_usernames","Creator_count","Creator_usernames"])
@@ -30,6 +30,7 @@ def main():
                 writer.writerow([agency[0],app_counts[0],app_counts[1],app_counts[2],user_counts[0],user_counts[1],user_counts[2],user_counts[3],user_counts[4],user_counts[5],user_counts[6]])
 
     with open(filename, 'r') as f:
+        print("results from: " + filename + "\n")
         print(f.read())
 
 
